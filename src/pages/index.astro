@@ -1,0 +1,26 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import CommittedSection from '../components/CommittedSection.astro';
+import BrokerSection from '../components/BrokerSection.astro';
+import CoverageSection from '../components/CoverageSection.astro';
+import WebinarSection from '../components/WebinarSection.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+---
+
+<Layout
+  title="Superior Senior Benefits | Medicare Insurance Broker"
+  description="Superior Senior Benefits helps you find the right Medicare plan. Local, licensed Medicare broker serving seniors across the region. Free consultations."
+>
+  <Navbar />
+  <main>
+    <Hero />
+    <CommittedSection />
+    <BrokerSection />
+    <CoverageSection />
+    <WebinarSection />
+  </main>
+  <Footer />
+</Layout>

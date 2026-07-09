@@ -1,0 +1,264 @@
+---
+---
+<section class="hero">
+  <!-- col 1: image inset on all 4 sides so background shows as a frame -->
+  <div class="hero__left">
+    <div class="hero__image-wrap">
+      <img
+        src="/images/hero-bg.jpg"
+        alt="Medicare broker talking with a senior client"
+        class="hero__bg"
+        width="1384"
+        height="844"
+        fetchpriority="high"
+      />
+      <div class="hero__overlay"></div>
+      <div class="hero__text">
+        <h1 class="hero__headline">Medicare doesn't have to be so confusing.</h1>
+        <p class="hero__subtitle">Book an appointment and get covered by Medicare today!</p>
+        <a href="#webinar" class="hero__btn">Book Today!</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- col 2: stats — left edge aligns with navbar CTA left edge -->
+  <aside class="hero__stats">
+    <div class="hero__stat">
+      <div class="hero__stat-content">
+        <span class="hero__stat-number">1.5k+</span>
+        <span class="hero__stat-label">Clients Assisted</span>
+      </div>
+    </div>
+    <div class="hero__stat">
+      <div class="hero__stat-content">
+        <span class="hero__stat-number">25+</span>
+        <span class="hero__stat-label">Offered Carriers</span>
+      </div>
+    </div>
+    <div class="hero__stat">
+      <div class="hero__stat-content">
+        <span class="hero__stat-number">7+</span>
+        <span class="hero__stat-label">Years of Experience</span>
+      </div>
+    </div>
+    <p class="hero__scroll">Scroll to learn more</p>
+  </aside>
+</section>
+
+<style>
+  /* Same 2-col grid as Navbar so columns align exactly.
+     grid-template-rows pins the row to exactly the visible viewport below the navbar
+     (4.27rem content + 11px border = navbar total height). Both columns stretch to
+     fill this height automatically via the default align-items: stretch. */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr var(--col-right);
+    grid-template-rows: calc(100svh - 4.7rem - 7px);
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  /* ── Left col: cream background visible on all 4 sides as a frame ── */
+  .hero__left {
+    padding: 2rem 1.25rem 2rem var(--hero-pad);
+    overflow: hidden; /* contains the image within the padded area */
+  }
+
+  .hero__image-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .hero__bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.42) 25%,
+      rgba(0, 0, 0, 0) 52%
+    );
+    pointer-events: none;
+  }
+
+  .hero__text {
+    position: absolute;
+    bottom: 6%;
+    left: 4%;
+    right: 4%;
+  }
+
+  /*
+   * max-width derived from Figma: text box is 965px at 64px font = 15.08em.
+   * This keeps the ratio constant as the font scales, so the text always
+   * wraps to 2 lines at the same point regardless of viewport size.
+   */
+  .hero__headline {
+    font-family: var(--font-heading);
+    font-size: clamp(1.75rem, 2.5vw, 3rem);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.15;
+    max-width: 15em;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero__subtitle {
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero__btn {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    font-family: var(--font-heading);
+    font-size: clamp(0.95rem, 1.1vw, 1.25rem);
+    font-weight: 400;
+    padding: 0.625rem 1.25rem;
+    transition: opacity 0.2s;
+  }
+
+  .hero__btn:hover {
+    opacity: 0.88;
+  }
+
+  /* ── Right col: stats sidebar ── */
+  .hero__stats {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+  }
+
+  /* Each stat takes an equal share of the column height */
+  .hero__stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: clamp(1rem, 1.5vw, 1.75rem);
+    border-bottom: 1px solid var(--color-text);
+  }
+
+  .hero__stat:first-child {
+    border-top: 1px solid var(--color-text);
+  }
+
+  /* Number + label side by side, baselines aligned */
+  .hero__stat-content {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .hero__stat-number {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 3.75vw, 4.5rem);
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .hero__stat-label {
+    font-family: var(--font-heading);
+    font-size: clamp(0.875rem, 1.25vw, 1.5rem);
+    font-weight: 400;
+  }
+
+  .hero__scroll {
+    font-family: var(--font-heading);
+    font-size: clamp(0.625rem, 0.9vw, 1.1rem);
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .hero {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto; /* revert to auto rows on mobile */
+    }
+
+    .hero__left {
+      padding: 1rem;
+      height: 58svh;
+      min-height: 340px;
+    }
+
+    .hero__image-wrap {
+      height: 100%;
+    }
+
+    /* Stats become full-width divided rows — number left, label right —
+       mirroring the ruled sections in the desktop/Figma sidebar. */
+    .hero__stats {
+      flex-direction: column;
+      gap: 0;
+      /* Keep the big numbers ~30px from the viewport edge */
+      padding: 1.25rem 1.875rem 0.75rem;
+    }
+
+    .hero__stat {
+      flex: none;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 1rem 0;
+    }
+
+    .hero__stat:first-child {
+      border-top: none;
+    }
+
+    .hero__stat-content {
+      flex-direction: row;
+      align-items: baseline;
+      justify-content: space-between;
+      width: 100%;
+      gap: 1rem;
+    }
+
+    .hero__stat-label {
+      text-align: right;
+    }
+
+    .hero__scroll {
+      width: 100%;
+      text-align: center;
+      padding-top: 1rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero__left {
+      height: 52svh;
+      min-height: 300px;
+    }
+
+    .hero__headline {
+      font-size: 1.6rem;
+    }
+
+    .hero__stat-number {
+      font-size: 2.25rem;
+    }
+
+    .hero__stat-label {
+      font-size: 1rem;
+    }
+  }
+</style>

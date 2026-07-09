@@ -1,0 +1,119 @@
+# Superior Senior Benefits — Project Context
+
+## Client
+Medicare insurance broker (Matthew Garza). Static marketing site, one page currently.
+
+**Maintained by the client directly via Claude Code.** Matthew has zero coding experience and edits this site by describing what he wants in plain English. See "Working With a Non-Technical Client" below — those safeguards are mandatory, not optional. The full non-technical instructions live in `HANDOFF.md` (repo root).
+
+## Stack
+- **Framework:** Astro (static output, `astro build`)
+- **Styling:** Plain CSS with CSS custom properties — no Tailwind, no CSS-in-JS
+- **Fonts:** Google Fonts — `Bitter` (headings) and `Raleway` (body)
+- **Deployment:** Static HTML (`dist/`) hosted on **AWS Amplify**, connected to the **GitHub** repo. Every push to the `main` branch auto-triggers a build (`npm run build`) and deploys `dist/`. See "Hosting & Deployment" below.
+
+## Commands
+```bash
+npm run dev      # local dev server
+npm run build    # production build → dist/
+npm run preview  # preview production build
+```
+
+## Design System
+
+### Colors (CSS variables in `src/styles/global.css`)
+| Variable              | Hex       | Usage                         |
+|-----------------------|-----------|-------------------------------|
+| `--color-bg`          | `#fffef1` | Page background (cream)       |
+| `--color-primary`     | `#034c3c` | Dark green — navbar, buttons, CTA, Coverage section bg |
+| `--color-card-tan`    | `#e3e0c6` | Card backgrounds (tan/beige)  |
+| `--color-accent-red`  | `#ff9191` | Medigap, Part C cards         |
+| `--color-accent-blue` | `#6590ff` | Dental/Vision, Critical Illness cards |
+| `--color-accent-yellow`| `#fff348`| Short-Term, Home Health cards |
+| `--color-text`        | `#000000` | Default text                  |
+| `--color-text-light`  | `#fffef1` | Text on dark/primary backgrounds |
+
+### Typography
+- **Heading font:** `Bitter` — weights 400 (Regular), 600 (SemiBold), 700 (Bold)
+- **Body font:** `Raleway` — weights 400, 700
+- **Base heading sizes:** 64px (h1/h2) → 32px (h3/labels) at 1920px design width
+  - Use `clamp()` for fluid scaling
+
+### Layout
+- Design was created at **1920×1080** resolution
+- `--max-width: 1920px` — inner containers cap at this
+- `--page-padding: clamp(1.5rem, 4vw, 7.8125rem)` — horizontal gutter
+
+## Page Sections (top → bottom)
+1. `Navbar.astro` — sticky, logo + "Book an Appointment" CTA
+2. `Hero.astro` — photo (75% width) + stats sidebar (25%)
+3. `CommittedSection.astro` — text left, Plan A/B/D cards right
+4. `BrokerSection.astro` — founder card + 2 value-prop cards
+5. `CoverageSection.astro` — dark green bg, 3×2 grid of colored plan cards
+6. `WebinarSection.astro` — steps 1 & 2 + CTA button + photo
+7. `Footer.astro` — social icons, logo, legal links, copyright
+
+## Image Assets
+All images are in `/public/images/`. They were originally sourced from Figma MCP and saved locally (Figma asset URLs expire after 7 days). If assets need refreshing, re-authenticate Figma MCP and re-pull them.
+
+| File                       | Used in            |
+|----------------------------|--------------------|
+| `logo-navbar.png`          | Navbar             |
+| `logo-footer.png`          | Footer             |
+| `hero-bg.jpg`              | Hero background    |
+| `plan-a-icon.png`          | CommittedSection   |
+| `plan-b-icon.png`          | CommittedSection   |
+| `plan-d-icon.png`          | CommittedSection   |
+| `founder.jpg`              | BrokerSection      |
+| `no-extra-fees-icon.png`   | BrokerSection      |
+| `human-guidance-icon.png`  | BrokerSection      |
+| `webinar-calendar-icon.png`| WebinarSection CTA |
+| `webinar-photo.png`        | WebinarSection     |
+| `social-instagram.png`     | Footer             |
+| `social-linkedin.png`      | Footer             |
+| `social-facebook.png`      | Footer             |
+
+## Responsive Breakpoints
+The Figma design is **desktop-only (1920px)**; mobile/tablet were adapted from it directly in chat (no dedicated mobile Figma frame). Breakpoints:
+- **1100px** — Webinar section collapses to one column; photo moves full-width below the content.
+- **900px** — Main tablet/phone collapse: multi-column sections (Hero, Committed, Broker, Coverage) stack to a single column. Hero stats become full-width divided rows (number left, label right).
+- **600px** — Phone fine-tuning: smaller navbar logo/CTA, reduced hero photo height + headline, remaining grids (Broker cards, Coverage) go single-column, section padding tightens 4rem→3rem, webinar CTA goes full-width.
+
+Corners are square across the site (hero image, buttons, plan/founder/value cards, photos). The only rounded elements are the **Coverage plan cards** (`border-radius: 1.75rem`) and the **webinar step-number circles** (`border-radius: 50%`).
+
+## SEO
+- Each page has unique `<title>` and `<meta name="description">`
+- Canonical URLs auto-generated from `Astro.site`
+- Open Graph tags on every page
+- `sitemap-index.xml` auto-generated by `@astrojs/sitemap` on build
+- `robots.txt` at `/public/robots.txt` — update domain after deployment
+
+## Domain
+Update `site:` in `astro.config.mjs` with the real production domain when known (currently placeholder `https://superiorseniorbenefits.com`).
+
+## Working With a Non-Technical Client (READ FIRST — mandatory)
+The site owner edits this site by talking to Claude Code in plain English. He does not know code, file paths, git, or hosting, and should never be asked to. Interpret loose requests generously but safely, using these safeguards:
+
+1. **Linking a file = bundle it into the project.** Whenever he wants to "link", "attach", "add a download", or "redirect" to a file (PDF, doc, image, etc.), NEVER link to a path on his computer (e.g. `~/Downloads/...`), a `file://` path, or a temporary/expiring URL. **Copy the file into `public/`** — PDFs/docs → `public/legal/` or `public/docs/`, images → `public/images/` — rename to lowercase-hyphenated (no spaces), and link with a **site-relative path** (e.g. `/legal/terms-and-conditions.pdf`). This is exactly how the footer Terms/Privacy PDFs were done. If you can't locate the file he means, ask where it is in plain English.
+2. **Any reference to a file on his machine gets copied in.** The live site must never depend on files that only exist on his computer.
+3. **"Publish" / "make it live" / "post it" = commit + push to `main`.** Amplify auto-deploys from `main`. State this in one plain sentence and **confirm before pushing** (it's outward-facing). Never push silently.
+4. **Preserve the design system.** Reuse the color / spacing / font tokens in `src/styles/global.css`. Do not add Tailwind, CSS-in-JS, new libraries, or new fonts unless explicitly asked.
+5. **Always run `npm run build` before saying you're done.** If it fails, fix it first. Never report success on a broken build.
+6. **Keep changes consistent site-wide.** A phone number, email, business name, or link change must be updated *everywhere* it appears.
+7. **A new "page" means a complete page.** Include the Navbar and Footer, matching styles/tokens, unique `<title>`/meta, and add it to navigation if appropriate.
+8. **Confirm irreversible or destructive actions first** (deleting a section, replacing/removing an image, changing the domain, editing config).
+9. **Explain outcomes in plain, non-technical English** — say what changed and how he'll see it live, not which selectors moved.
+10. **When a request is ambiguous, ask ONE simple question** and offer a sensible default rather than guessing on something hard to undo.
+
+**Do NOT touch without explicit instruction:** `astro.config.mjs` `site:` domain, `package.json` dependencies, build config, or `.git` internals.
+
+## Hosting & Deployment
+- **Code home:** GitHub repository, primary branch `main`.
+- **Live hosting:** AWS Amplify, connected to the GitHub repo. Each push to `main` auto-runs `npm run build` and publishes `dist/`. No manual upload step.
+- **Publish flow for the client:** describe change to Claude → Claude edits + builds → Claude commits & pushes to `main` (with confirmation) → Amplify rebuilds → live in a few minutes.
+- **Client handoff guide:** `HANDOFF.md` (repo root) — the full, non-technical walkthrough of Claude Code, GitHub, and Amplify. A matching Google Doc was generated for easy reading/printing.
+
+## Figma Source
+- **File:** `fBLUS7snqcJCWvtvOhKjFk` (hackathon-page)
+- **Design node:** `2001:2` (Mason Unc canvas) → `2001:10` (Page frame)
+- **Figma MCP:** Authenticated via OAuth (plugin `figma@claude-plugins-official`)
+- The component hierarchy in Figma does not always match the best HTML structure — always use semantic/accessible HTML rather than replicating Figma layer nesting literally.

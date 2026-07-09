@@ -1,0 +1,138 @@
+---
+const plans = [
+  {
+    title: 'Medigap',
+    desc: 'Covers gaps Medicare leaves behind like copays and deductibles',
+    color: 'var(--color-accent-red)',
+  },
+  {
+    title: 'Dental, Vision & Hearing',
+    desc: "Covers plans original Medicare doesn't factor for",
+    color: 'var(--color-accent-blue)',
+  },
+  {
+    title: 'Short-Term Recovery',
+    desc: 'For skilled nursing facilities and assisted living',
+    color: 'var(--color-accent-yellow)',
+  },
+  {
+    title: 'Part C Medicare Advantage',
+    desc: 'Bundled Coverage including extra health services',
+    color: 'var(--color-accent-red)',
+  },
+  {
+    title: 'Critical Illness',
+    desc: 'Financial protection for cancer, heart attacks, and stroke diagnoses',
+    color: 'var(--color-accent-blue)',
+  },
+  {
+    title: 'Home Health Care',
+    desc: 'Support for receiving care in your own home',
+    color: 'var(--color-accent-yellow)',
+  },
+];
+---
+
+<section class="coverage">
+  <div class="coverage__inner">
+    <h2 class="coverage__heading">Coverage for Every Stage of Your Health Journey</h2>
+    <p class="coverage__subtext">
+      No two people have the same health needs, which is why Matthew works with a wide range of plan
+      types — not just what's most popular, but what's right for you. Not sure which plans apply to
+      your situation? That's exactly what the consultation is for.
+    </p>
+
+    <div class="coverage__grid">
+      {plans.map((plan) => (
+        <div class="coverage-card" style={`background-color: ${plan.color};`}>
+          <p class="coverage-card__title">{plan.title}</p>
+          <p class="coverage-card__desc">{plan.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .coverage {
+    background-color: var(--color-primary);
+    padding: 4rem var(--page-padding);
+  }
+
+  .coverage__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .coverage__heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 2.5vw, 3rem);
+    font-weight: 600;
+    color: var(--color-text-light);
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+
+  .coverage__subtext {
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    font-weight: 400;
+    color: var(--color-text-light);
+    line-height: 1.5;
+    max-width: 90ch;
+    margin-bottom: 2.5rem;
+  }
+
+  .coverage__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Wider horizontal than vertical gap, matching the Figma spacing */
+    column-gap: 2rem;
+    row-gap: 1.25rem;
+  }
+
+  .coverage-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* top-align so titles share the same baseline across a row */
+    border-radius: 1.75rem;
+    padding: 1.75rem 2.25rem;
+  }
+
+  .coverage-card__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    font-weight: 400;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .coverage-card__desc {
+    font-family: var(--font-body);
+    font-size: clamp(0.9rem, 1.1vw, 1.25rem);
+    font-weight: 400;
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 900px) {
+    .coverage__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .coverage {
+      padding: 3rem var(--page-padding);
+    }
+
+    .coverage__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .coverage-card {
+      padding: 1.5rem 1.75rem;
+    }
+  }
+</style>

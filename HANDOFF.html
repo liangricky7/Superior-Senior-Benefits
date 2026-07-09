@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Superior Senior Benefits — Website Owner's Guide</title>
+<style>
+  body { font-family: Georgia, 'Times New Roman', serif; max-width: 800px; margin: 2rem auto; padding: 0 1.5rem; line-height: 1.6; color: #111; }
+  h1 { font-size: 2rem; border-bottom: 3px solid #034c3c; padding-bottom: 0.4rem; color: #034c3c; }
+  h2 { font-size: 1.35rem; margin-top: 2.2rem; color: #034c3c; border-bottom: 1px solid #ddd; padding-bottom: 0.2rem; }
+  table { border-collapse: collapse; width: 100%; margin: 1rem 0; }
+  th, td { border: 1px solid #bbb; padding: 0.5rem 0.7rem; text-align: left; vertical-align: top; }
+  th { background: #e3e0c6; }
+  code { background: #f3f2e6; padding: 0.1rem 0.35rem; border-radius: 3px; font-family: 'Courier New', monospace; }
+  blockquote { border-left: 4px solid #034c3c; margin: 1rem 0; padding: 0.3rem 1rem; background: #faf9ef; }
+  hr { border: none; border-top: 1px solid #ccc; margin: 2rem 0; }
+  @media print { body { margin: 0; } h2 { page-break-after: avoid; } }
+</style>
+</head>
+<body>
+<h1>Superior Senior Benefits — Website Owner&rsquo;s Guide</h1>
+<p><em>A plain-English guide to running and updating your website. No coding required.</em></p>
+<hr>
+
+<h2>Table of Contents</h2>
+<ol>
+<li>What you own and where it lives</li>
+<li>The three tools (in plain English)</li>
+<li>One-time setup</li>
+<li>How to make a change (the everyday routine)</li>
+<li>How your changes go live</li>
+<li>Example requests you can copy</li>
+<li>Golden rules</li>
+<li>GitHub, explained simply</li>
+<li>AWS Amplify (your hosting), explained simply</li>
+<li>If something goes wrong</li>
+<li>Glossary</li>
+<li>Who to call</li>
+</ol>
+<hr>
+
+<h2>1. What you own and where it lives</h2>
+<p>You own a <strong>website</strong> &mdash; a set of files that, together, show your business online. Those files live in three places, and each has one job:</p>
+<ul>
+<li><strong>GitHub</strong> &mdash; the safe filing cabinet that stores your website and remembers every version.</li>
+<li><strong>AWS Amplify</strong> &mdash; the service that takes those files and shows them to the public on the internet.</li>
+<li><strong>Claude Code</strong> &mdash; your assistant. You talk to it in plain English, and it does the actual editing for you.</li>
+</ul>
+<p>You will spend almost all of your time talking to <strong>Claude Code</strong>. The other two mostly run themselves.</p>
+<blockquote><strong>The big idea:</strong> You describe what you want &rarr; Claude makes the change &rarr; the change is saved to GitHub &rarr; Amplify automatically puts it live. You never touch the code yourself.</blockquote>
+
+<h2>2. The three tools (in plain English)</h2>
+<table>
+<tr><th>Tool</th><th>Think of it as&hellip;</th><th>What you do with it</th></tr>
+<tr><td><strong>Claude Code</strong></td><td>A skilled assistant sitting next to you</td><td>Tell it what to change, in normal sentences</td></tr>
+<tr><td><strong>GitHub</strong></td><td>A filing cabinet with a perfect memory</td><td>Nothing day-to-day; it quietly saves every version</td></tr>
+<tr><td><strong>AWS Amplify</strong></td><td>The printing press that publishes to the web</td><td>Nothing day-to-day; it auto-publishes when you save</td></tr>
+</table>
+<p>You do <strong>not</strong> need to understand how they work internally. You only need to know the routine in Section 4.</p>
+
+<h2>3. One-time setup</h2>
+<p>You only do this once. If a technical helper set your computer up already, you can skip to Section 4.</p>
+<p><strong>A. Accounts to have (someone can help you create these):</strong></p>
+<ul>
+<li>A <strong>GitHub</strong> account (free) &mdash; invited to the project.</li>
+<li>An <strong>AWS</strong> account &mdash; where Amplify runs and where billing lives.</li>
+<li>A <strong>Claude</strong> account/subscription &mdash; to use Claude Code.</li>
+</ul>
+<p><strong>B. Install Claude Code on your computer:</strong></p>
+<ul>
+<li>Claude Code runs in an app called the <strong>Terminal</strong> (already on your Mac; search for &ldquo;Terminal&rdquo; in Spotlight).</li>
+<li>Ask your helper to install Claude Code once and confirm that typing <code>claude</code> in the Terminal starts it.</li>
+</ul>
+<p><strong>C. Get a copy of the website onto your computer:</strong></p>
+<ul>
+<li>Your helper will &ldquo;clone&rdquo; (download) the project once so it sits in a folder, for example: <code>Documents/GitHub/Superior-Senior-Benefits</code></li>
+<li>After that, it&rsquo;s always there and ready.</li>
+</ul>
+<p><em>You do this section <strong>once</strong>. Everyday work is just Section 4.</em></p>
+
+<h2>4. How to make a change (the everyday routine)</h2>
+<p>This is the part you&rsquo;ll actually use. It&rsquo;s five steps.</p>
+<p><strong>Step 1 &mdash; Open the Terminal.</strong> Press <code>Cmd + Space</code>, type <code>Terminal</code>, press Enter.</p>
+<p><strong>Step 2 &mdash; Go to your website folder.</strong> Type this and press Enter:</p>
+<p><code>cd Documents/GitHub/Superior-Senior-Benefits</code></p>
+<p><strong>Step 3 &mdash; Start your assistant.</strong> Type this and press Enter:</p>
+<p><code>claude</code></p>
+<p><strong>Step 4 &mdash; Ask for what you want, in plain English.</strong> For example:</p>
+<blockquote>&ldquo;Change the phone number in the footer to (555) 123-4567.&rdquo;</blockquote>
+<p>Claude will make the change and tell you what it did. If it asks a question, answer in normal words.</p>
+<p><strong>Step 5 &mdash; See it, then publish it.</strong></p>
+<ul>
+<li>To preview on your own screen first, say: <em>&ldquo;Show me the site locally so I can look before publishing.&rdquo;</em></li>
+<li>When you&rsquo;re happy, say: <em>&ldquo;Publish this / make it live.&rdquo;</em> Claude will confirm, then send it to GitHub and Amplify will put it online within a few minutes.</li>
+</ul>
+<p>That&rsquo;s the whole routine. <strong>Talk &rarr; review &rarr; publish.</strong></p>
+
+<h2>5. How your changes go live</h2>
+<p>You don&rsquo;t upload anything by hand. Here&rsquo;s the automatic chain once you say &ldquo;publish&rdquo;:</p>
+<ol>
+<li>Claude <strong>saves</strong> your change into GitHub (this is called a &ldquo;commit and push&rdquo;).</li>
+<li>Amplify <strong>notices</strong> the new version automatically.</li>
+<li>Amplify <strong>rebuilds</strong> the site and <strong>publishes</strong> it.</li>
+<li>In a few minutes, your live website shows the change.</li>
+</ol>
+<p>If you refresh your website and don&rsquo;t see the change yet, wait 2&ndash;3 minutes and refresh again.</p>
+
+<h2>6. Example requests you can copy</h2>
+<p>Copy these and adjust the details. Claude understands normal language, so you don&rsquo;t have to phrase them perfectly.</p>
+<p><strong>Text changes</strong></p>
+<ul>
+<li>&ldquo;Change the headline to &lsquo;Medicare made simple.&rsquo;&rdquo;</li>
+<li>&ldquo;Fix the typo in the Committed to Helping paragraph.&rdquo;</li>
+<li>&ldquo;Update the copyright year in the footer to 2027.&rdquo;</li>
+</ul>
+<p><strong>Contact info</strong></p>
+<ul>
+<li>&ldquo;Update the phone number everywhere on the site to (555) 123-4567.&rdquo;</li>
+<li>&ldquo;Change the booking link to this new one: https://&hellip;&rdquo;</li>
+</ul>
+<p><strong>Photos</strong></p>
+<ul>
+<li>&ldquo;Replace the founder photo with the new one &mdash; the file is on my Desktop called matthew-new.jpg.&rdquo; <em>(Claude will copy your file into the project so the site doesn&rsquo;t depend on your computer.)</em></li>
+</ul>
+<p><strong>Documents / downloads</strong></p>
+<ul>
+<li>&ldquo;Link the footer &lsquo;Privacy Policy&rsquo; to this PDF in my Downloads folder.&rdquo; <em>(Claude will bring the PDF into the website itself and link to that copy &mdash; never to your computer.)</em></li>
+</ul>
+<p><strong>Sections &amp; layout</strong></p>
+<ul>
+<li>&ldquo;Add a testimonials section below the founder section.&rdquo;</li>
+<li>&ldquo;Make the buttons a little bigger on phones.&rdquo;</li>
+</ul>
+<p><strong>Publishing</strong></p>
+<ul>
+<li>&ldquo;Show me the site so I can review it.&rdquo;</li>
+<li>&ldquo;Looks good &mdash; publish it.&rdquo;</li>
+</ul>
+
+<h2>7. Golden rules</h2>
+<ol>
+<li><strong>Just describe the goal.</strong> You don&rsquo;t need the &ldquo;right words.&rdquo; Say what you want to happen.</li>
+<li><strong>Review before you publish.</strong> Ask to see it first if you&rsquo;re unsure.</li>
+<li><strong>One change at a time is fine.</strong> You can always come back for more.</li>
+<li><strong>If Claude asks a question, answer plainly.</strong> It only asks when it needs to get something right.</li>
+<li><strong>Nothing is permanent.</strong> GitHub remembers every past version &mdash; anything can be undone (see Section 10).</li>
+<li><strong>Files on your computer get copied in.</strong> When you point Claude at a photo or PDF on your Mac, it copies that file into the website so the live site never breaks if you move or delete the original.</li>
+<li><strong>When in doubt, ask Claude.</strong> e.g. <em>&ldquo;Is it safe to do this?&rdquo;</em> or <em>&ldquo;What will this change?&rdquo;</em></li>
+</ol>
+
+<h2>8. GitHub, explained simply</h2>
+<p><strong>What it is:</strong> an online filing cabinet that stores your website and keeps a dated history of every version.</p>
+<p><strong>Why you care:</strong> it means you can never truly &ldquo;break&rdquo; the site &mdash; an earlier version is always recoverable.</p>
+<p><strong>What you actually do with it:</strong> almost nothing. Claude saves to GitHub for you when you publish. Occasionally you might:</p>
+<ul>
+<li><strong>See history:</strong> ask Claude, <em>&ldquo;Show me the recent changes we&rsquo;ve made.&rdquo;</em></li>
+<li><strong>Undo:</strong> ask Claude, <em>&ldquo;Undo the last change and put back the previous version.&rdquo;</em></li>
+</ul>
+<p>You do not need to log into GitHub for daily work.</p>
+
+<h2>9. AWS Amplify (your hosting), explained simply</h2>
+<p><strong>What it is:</strong> the service that actually shows your website to the public.</p>
+<p><strong>Why Amplify:</strong> it&rsquo;s low-maintenance. It&rsquo;s connected to your GitHub filing cabinet, so whenever a new version is saved, Amplify <strong>automatically</strong> rebuilds and publishes &mdash; no manual uploading.</p>
+<p><strong>Things you&rsquo;ll do occasionally (with a helper the first time):</strong></p>
+<ul>
+<li><strong>Connect the site (one time):</strong> In the Amplify console, &ldquo;Host web app&rdquo; &rarr; connect your GitHub repo &rarr; pick the <code>main</code> branch. Amplify detects the build automatically. After this, it&rsquo;s automatic forever.</li>
+<li><strong>Custom domain:</strong> In Amplify &rarr; &ldquo;Domain management,&rdquo; add your domain (e.g. superiorseniorbenefits.com) and follow the steps. Do this once.</li>
+<li><strong>Check a deploy:</strong> The Amplify dashboard shows a green checkmark when the latest publish succeeded.</li>
+</ul>
+<p><strong>Cost:</strong> Amplify is usage-based and typically very inexpensive for a small marketing site (often a few dollars a month or less). Keep an eye on the AWS billing page, or ask a helper to set a billing alert.</p>
+<blockquote><em>After the one-time connection, you rarely open Amplify at all. Publishing happens automatically when you say &ldquo;publish&rdquo; to Claude.</em></blockquote>
+
+<h2>10. If something goes wrong</h2>
+<p><strong>&ldquo;I published, but I don&rsquo;t see the change.&rdquo;</strong> Wait 2&ndash;3 minutes and refresh. Still nothing? Ask Claude: <em>&ldquo;Did my last change publish successfully?&rdquo;</em></p>
+<p><strong>&ldquo;I don&rsquo;t like the change I just made.&rdquo;</strong> Ask Claude: <em>&ldquo;Undo the last change.&rdquo;</em> Then publish again.</p>
+<p><strong>&ldquo;The site looks broken.&rdquo;</strong> Ask Claude: <em>&ldquo;Please go back to the last version that worked, and publish it.&rdquo;</em> GitHub keeps every version, so this is safe.</p>
+<p><strong>&ldquo;Claude is asking me something I don&rsquo;t understand.&rdquo;</strong> Reply: <em>&ldquo;Explain that in simpler terms and recommend the best option.&rdquo;</em></p>
+<p><strong>&ldquo;The Terminal shows red text / an error.&rdquo;</strong> Copy the message and paste it to Claude with: <em>&ldquo;I got this error &mdash; what does it mean and how do we fix it?&rdquo;</em></p>
+<p><strong>Still stuck?</strong> See Section 12.</p>
+
+<h2>11. Glossary</h2>
+<ul>
+<li><strong>Claude Code</strong> &mdash; your plain-English assistant that edits the site.</li>
+<li><strong>Terminal</strong> &mdash; the app where you type <code>claude</code> to start.</li>
+<li><strong>Repository (&ldquo;repo&rdquo;)</strong> &mdash; the project folder / your website&rsquo;s files.</li>
+<li><strong>GitHub</strong> &mdash; online storage that keeps every version of the repo.</li>
+<li><strong>Commit / Push</strong> &mdash; saving a change into GitHub (Claude does this for you).</li>
+<li><strong>Deploy / Publish</strong> &mdash; putting the change live on the internet (Amplify does this automatically).</li>
+<li><strong>AWS Amplify</strong> &mdash; the hosting service that publishes your site.</li>
+<li><strong>Branch (main)</strong> &mdash; the official live version of your site.</li>
+<li><strong>Build</strong> &mdash; the automatic step that turns the files into the finished website.</li>
+</ul>
+
+<h2>12. Who to call</h2>
+<p>Fill this in and keep it handy:</p>
+<ul>
+<li><strong>Technical helper / developer:</strong> ________________________</li>
+<li><strong>GitHub account email:</strong> ________________________</li>
+<li><strong>AWS account email / login:</strong> ________________________</li>
+<li><strong>Domain registrar (where the web address was bought):</strong> ________________________</li>
+</ul>
+<hr>
+<p><em>You&rsquo;ve got this. The routine is always the same: open the Terminal, start Claude, say what you want, review, and publish.</em></p>
+</body>
+</html>

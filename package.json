@@ -1,0 +1,25 @@
+{
+  "name": "superior-senior-benefits",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liangricky7/Superior-Senior-Benefits.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/liangricky7/Superior-Senior-Benefits/issues"
+  },
+  "homepage": "https://github.com/liangricky7/Superior-Senior-Benefits#readme",
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^7.0.0"
+  }
+}

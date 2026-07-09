@@ -1,0 +1,195 @@
+---
+---
+<section class="broker">
+  <div class="broker__intro">
+    <h2 class="broker__heading">Your Advocate. Your Advisor. Your Resource — For Free.</h2>
+    <p class="broker__subtext">
+      Working with a broker <strong>costs you nothing</strong> and gives you everything: unbiased
+      guidance, personal service, and someone in your corner every step of the way.
+    </p>
+  </div>
+
+  <div class="founder">
+    <img
+      src="/images/founder.jpg"
+      alt="Matthew Garza, founder of Superior Senior Benefits"
+      class="founder__photo"
+      width="447"
+      height="447"
+    />
+    <div class="founder__bio">
+      <h3 class="founder__name">Meet Our Founder</h3>
+      <p class="founder__text">
+        With over 7+ years of industry experience, Matthew Garza has helped countless seniors get
+        covered by Medicare. Having managed over 400+ active clients at once in the past and
+        representing over 25 carriers, Matthew brings unmatched expertise and dedication to every
+        client relationship.
+      </p>
+    </div>
+  </div>
+
+  <div class="broker__cards">
+    <div class="broker-card">
+      <img src="/images/no-extra-fees-icon.png" alt="No extra fees illustration" class="broker-card__icon" />
+      <div>
+        <p class="broker-card__title">No Extra Fees.</p>
+        <p class="broker-card__text">
+          The Premium you pay is the same whether you go through a broker or directly to the carrier.
+        </p>
+      </div>
+    </div>
+    <div class="broker-card">
+      <img src="/images/human-guidance-icon.png" alt="Human guidance illustration" class="broker-card__icon" />
+      <div>
+        <p class="broker-card__title">Authentic Human Guidance.</p>
+        <p class="broker-card__text">
+          When you go direct, you get only one option, long hold times, and buggy automated phone
+          systems. When you work with us, you get a real human expert.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .broker {
+    padding: 4rem var(--page-padding);
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  /* ── Intro ── */
+  .broker__intro {
+    margin-bottom: 2.5rem;
+  }
+
+  .broker__heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 2.5vw, 3rem);
+    font-weight: 600;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+  }
+
+  .broker__subtext {
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    font-weight: 400;
+    line-height: 1.5;
+    max-width: 90ch;
+  }
+
+  /* ── Founder card ── */
+  .founder {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 2.5rem;
+    background-color: var(--color-card-tan);
+    overflow: hidden;
+    margin-bottom: 2rem;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .founder__photo {
+    width: clamp(180px, 18vw, 360px);
+    height: clamp(180px, 18vw, 360px);
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .founder__name {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 2.1vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .founder__text {
+    font-family: var(--font-body);
+    font-size: clamp(1rem, 1.15vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  /* ── Two cards ── */
+  .broker__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .broker-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    background-color: var(--color-card-tan);
+    padding: 2rem 1.5rem;
+  }
+
+  .broker-card__icon {
+    width: clamp(72px, 8vw, 150px);
+    height: auto;
+    object-fit: contain;
+  }
+
+  .broker-card__title {
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+  }
+
+  .broker-card__text {
+    font-family: var(--font-body);
+    font-size: clamp(0.9rem, 1.1vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 900px) {
+    .founder {
+      grid-template-columns: 1fr;
+    }
+
+    .founder__photo {
+      width: 100%;
+      height: 320px;
+    }
+
+    .broker__cards {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .broker {
+      padding: 3rem var(--page-padding);
+    }
+
+    .broker__intro {
+      margin-bottom: 2rem;
+    }
+
+    .founder {
+      padding: 1.25rem;
+      gap: 1.5rem;
+    }
+
+    .founder__photo {
+      height: 240px;
+    }
+
+    .broker-card {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1.5rem 1.25rem;
+    }
+
+    .broker-card__icon {
+      width: 90px;
+    }
+  }
+</style>

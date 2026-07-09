@@ -1,0 +1,140 @@
+---
+---
+<footer class="footer">
+  <div class="footer__top">
+    <div class="footer__social">
+      <p class="footer__social-label">Follow Us on Social Media!</p>
+      <div class="footer__social-icons">
+        <a href="#" aria-label="Instagram">
+          <img src="/images/social-instagram.png" alt="Instagram" width="55" height="55" />
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <img src="/images/social-linkedin.png" alt="LinkedIn" width="55" height="55" />
+        </a>
+        <a href="#" aria-label="Facebook">
+          <img src="/images/social-facebook.png" alt="Facebook" width="57" height="57" />
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <a href="/" class="footer__logo" aria-label="Superior Senior Benefits home">
+      <img src="/images/logo-footer.png" alt="Superior Senior Benefits" width="424" height="117" />
+    </a>
+
+    <div class="footer__legal">
+      <p class="footer__legal-heading">Legal</p>
+      <a href="/legal/terms-and-conditions.pdf" class="footer__legal-link" target="_blank" rel="noopener noreferrer">Terms of Use</a>
+      <a href="/legal/privacy-policy.pdf" class="footer__legal-link" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+    </div>
+
+    <p class="footer__copyright">
+      Copyright &copy; 2026 Superior Senior Benefits. All Rights Reserved.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background-color: var(--color-bg);
+    border-top: 7px solid var(--color-primary);
+    padding: 2.8125rem var(--page-padding) 1.5rem;
+  }
+
+  /* ── Social row ── */
+  .footer__top {
+    margin-bottom: 2rem;
+  }
+
+  .footer__social-label {
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer__social-icons {
+    display: flex;
+    gap: 1.0625rem;
+    align-items: center;
+  }
+
+  .footer__social-icons a {
+    transition: opacity 0.2s;
+  }
+
+  .footer__social-icons a:hover {
+    opacity: 0.75;
+  }
+
+  .footer__social-icons img {
+    width: clamp(36px, 2.86vw, 55px);
+    height: auto;
+  }
+
+  /* ── Bottom row: logo + legal + copyright ── */
+  .footer__bottom {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .footer__logo img {
+    height: clamp(60px, 6.09vw, 117px);
+    width: auto;
+  }
+
+  .footer__legal {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .footer__legal-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1rem, 1.25vw, 1.5rem);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .footer__legal-link {
+    font-family: var(--font-heading);
+    font-size: clamp(0.9rem, 1.1vw, 1.25rem);
+    font-weight: 400;
+    transition: opacity 0.2s;
+  }
+
+  .footer__legal-link:hover {
+    opacity: 0.7;
+  }
+
+  .footer__copyright {
+    font-family: var(--font-heading);
+    font-size: clamp(0.85rem, 1.1vw, 1.25rem);
+    font-weight: 400;
+    margin-left: auto;
+  }
+
+  @media (max-width: 900px) {
+    .footer__copyright {
+      margin-left: 0;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .footer {
+      padding: 2rem var(--page-padding) 1.25rem;
+    }
+
+    .footer__top {
+      margin-bottom: 1.5rem;
+    }
+
+    .footer__bottom {
+      gap: 1.5rem;
+    }
+  }
+</style>
